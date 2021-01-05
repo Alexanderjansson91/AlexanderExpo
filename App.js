@@ -9,12 +9,14 @@ export default function App() {
 
   var textInputValue = "";
 
+  //Handle onpress on my Button
   const handlePress = () => console.log(textInputValue)
 
+  //Handle inputvalue in Textfield.
   const handleChangeText = (textValue) => {
     textInputValue = textValue
     console.log(textInputValue)
-  }  
+  }
 
   return (
     <View style={styles.topContainer}>
@@ -28,14 +30,14 @@ export default function App() {
           onChangeText={handleChangeText}
         >
         </TextInput>
-      <View style={styles.submitButton}>
-      <Button
-       color='#ffffff'
-       title="Submit"
-       onPress={handlePress}
-      >
-      </Button>
-      </View>
+        <View style={styles.submitButton}>
+          <Button
+            color='#ffffff'
+            title="Submit"
+            onPress={handlePress}
+          >
+          </Button>
+        </View>
         <Text style={styles.infoText}>My feeling for this course.</Text>
         <View style={styles.imageView}>
           <Image
@@ -48,6 +50,8 @@ export default function App() {
   );
 }
 
+
+//Styles For my App
 const styles = StyleSheet.create({
 
   topContainer: {
@@ -78,8 +82,8 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
     paddingHorizontal: 12,
     width: 150,
-    marginLeft:20,
-    marginTop:20,
+    marginLeft: 20,
+    marginTop: 20,
   },
 
   myGoalsInputTextfield: {
