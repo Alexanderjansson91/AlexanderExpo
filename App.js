@@ -1,17 +1,49 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet,Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, Image, TextInput, View, Button } from 'react-native';
 import Header from './src/component/header'
 
+
+
 export default function App() {
+
+  var textInputValue = "";
+
+  const handlePress = () => console.log(textInputValue)
+
+  const handleChangeText = (textValue) => {
+    textInputValue = textValue
+    console.log(textInputValue)
+  }  
+
   return (
     <View style={styles.topContainer}>
       <Header headerText="Hello!" infoText="this is my first React Native Expo App" />
       <View style={styles.ViewContainer}>
         <Text style={styles.infoText}>My goals for this course</Text>
-        <TextInput style={styles.inputTextfield}>
+        <TextInput
+          style={styles.myGoalsInputTextfield}
+          placeholder="Initial Text"
+          multiline={true}
+          onChangeText={handleChangeText}
+        >
         </TextInput>
-    </View>
+      <View style={styles.submitButton}>
+      <Button
+       color='#ffffff'
+       title="Submit"
+       onPress={handlePress}
+      >
+      </Button>
+      </View>
+        <Text style={styles.infoText}>My feeling for this course.</Text>
+        <View style={styles.imageView}>
+          <Image
+            style={styles.iconView}
+            source={require('./assets/emojismiley.png')}
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -22,23 +54,51 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flex: 1
   },
-  ViewContainer: {
-    backgroundColor: '#D3D3D3',
+  imageView: {
+    backgroundColor: '#ffffff',
     flex: 1
   },
-  inputTextfield: {
+  ViewContainer: {
     backgroundColor: '#ffffff',
-    height:100,
-    width:350,
-    borderRadius:10,
+    flex: 1
+  },
+  iconView: {
+    width: 100,
+    height: 100,
+    resizeMode: 'stretch',
     marginLeft: 20,
-    marginTop:20, 
+    marginTop: 30,
+
+  },
+
+  submitButton: {
+    elevation: 8,
+    backgroundColor: "#800080",
+    borderRadius: 10,
+    paddingVertical: 3,
+    paddingHorizontal: 12,
+    width: 150,
+    marginLeft:20,
+    marginTop:20,
+  },
+
+  myGoalsInputTextfield: {
+    backgroundColor: '#ffffff',
+    height: 80,
+    borderColor: '#800080',
+    borderWidth: 2,
+    borderStyle: 'solid',
+    width: 375,
+    borderRadius: 10,
+    marginLeft: 20,
+    marginTop: 20,
+
   },
 
   infoText: {
     marginLeft: 20,
-    marginTop:40,
-    
+    marginTop: 40,
+
   },
 
 });
